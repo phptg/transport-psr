@@ -24,6 +24,7 @@
     "require": {
         "php": "8.2 - 8.5",
         "php-http/multipart-stream-builder": "^1.4.2",
+        "phptg/bot-api": "^0.11.0",
         "psr/http-client": "^1.0",
         "psr/http-factory": "^1.1",
         "psr/http-message": "^1.1 || ^2.0"
@@ -49,6 +50,7 @@
         }
     },
     "scripts": {
+        "test": "phpunit",
         "test-real": "phpunit --group=realApi",
         "cs-fix": "php-cs-fixer fix",
         "rector": "rector",
