@@ -11,7 +11,7 @@ use PHPUnit\Framework\Constraint\Callback;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
-use Phptg\BotApi\Transport\PsrTransport;
+use Phptg\TransportPsr\PsrTransport;
 use Phptg\BotApi\Type\InputFile;
 
 use function PHPUnit\Framework\assertInstanceOf;
