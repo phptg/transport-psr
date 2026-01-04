@@ -1,7 +1,8 @@
 {
     "name": "phptg/transport-psr",
-    "type": "library",
     "description": "PSR Transport for Telegram Bot API",
+    "license": "BSD-3-Clause",
+    "type": "library",
     "keywords": [
         "telegram",
         "bot",
@@ -9,18 +10,17 @@
         "psr",
         "transport"
     ],
-    "license": "BSD-3-Clause",
-    "support": {
-        "issues": "https://github.com/phptg/transport-psr/issues?state=open",
-        "source": "https://github.com/phptg/transport-psr",
-        "chat": "https://t.me/predvoditelev_chat"
-    },
     "authors": [
         {
             "name": "Sergei Predvoditelev",
             "homepage": "https://predvoditelev.ru"
         }
     ],
+    "support": {
+        "issues": "https://github.com/phptg/transport-psr/issues?state=open",
+        "chat": "https://t.me/predvoditelev_chat",
+        "source": "https://github.com/phptg/transport-psr"
+    },
     "require": {
         "php": "8.2 - 8.5",
         "php-http/multipart-stream-builder": "^1.4.2",
@@ -36,6 +36,7 @@
         "php-http/curl-client": "^2.4.0",
         "phpunit/phpunit": "^11.5.46",
         "psr/log": "^3.0.2",
+        "rector/rector": "^2.3.0",
         "yiisoft/files": "^2.1",
         "yiisoft/test-support": "^3.1.0"
     },
@@ -49,28 +50,29 @@
             "Phptg\\TransportPsr\\Tests\\": "tests"
         }
     },
-    "scripts": {
-        "test": "phpunit",
-        "test-real": "phpunit --group=realApi",
-        "cs-fix": "php-cs-fixer fix",
-        "rector": "rector",
-        "infection": "infection --threads=max",
-        "dependency-analyser": "composer-dependency-analyser"
-    },
-    "extra": {
-        "bamarni-bin": {
-            "bin-links": true,
-            "target-directory": "tools",
-            "forward-command": true
-        }
-    },
     "config": {
-        "sort-packages": true,
         "allow-plugins": {
             "bamarni/composer-bin-plugin": true,
             "composer/package-versions-deprecated": true,
             "infection/extension-installer": true,
             "php-http/discovery": false
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "bamarni-bin": {
+            "bin-links": true,
+            "forward-command": true,
+            "target-directory": "tools"
         }
+    },
+    "scripts": {
+        "cs-fix": "php-cs-fixer fix",
+        "dependency-analyser": "composer-dependency-analyser",
+        "infection": "infection --threads=max",
+        "psalm": "psalm",
+        "rector": "rector",
+        "test": "phpunit",
+        "test-real": "phpunit --group=realApi"
     }
 }
