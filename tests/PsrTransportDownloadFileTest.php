@@ -7,13 +7,13 @@ namespace Phptg\TransportPsr\Tests;
 use HttpSoft\Message\Request;
 use HttpSoft\Message\Response;
 use HttpSoft\Message\StreamFactory;
+use Phptg\TransportPsr\PsrTransport;
 use Phptg\TransportPsr\Tests\Support\RequestException;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Throwable;
 use Phptg\BotApi\Transport\DownloadFileException;
-use Phptg\BotApi\Transport\PsrTransport;
 
 use function PHPUnit\Framework\assertInstanceOf;
 use function PHPUnit\Framework\assertSame;

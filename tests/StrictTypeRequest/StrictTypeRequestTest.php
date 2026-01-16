@@ -7,9 +7,9 @@ namespace Phptg\TransportPsr\Tests\StrictTypeRequest;
 use HttpSoft\Message\Response;
 use HttpSoft\Message\StreamFactory;
 use Phptg\BotApi\Type\InputFile;
+use Phptg\TransportPsr\PsrTransport;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;
-use Phptg\BotApi\Transport\PsrTransport;
 
 use function PHPUnit\Framework\assertSame;
 
