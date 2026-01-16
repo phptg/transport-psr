@@ -7,10 +7,10 @@ namespace Phptg\TransportPsr\Tests\DownloadFileTo;
 use HttpSoft\Message\Request;
 use HttpSoft\Message\Response;
 use HttpSoft\Message\StreamFactory;
+use Phptg\TransportPsr\PsrTransport;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
-use Phptg\BotApi\Transport\PsrTransport;
 use Phptg\BotApi\Transport\SaveFileException;
 use Yiisoft\Files\FileHelper;
 
