@@ -1,6 +1,6 @@
 # PSR Transport for Telegram Bot API Change Log
 
-## 0.1.1 under development
+## 0.1.1 January 27, 2026
 
 - New #6: Add `PsrWebhookResponseFactory`.
 
