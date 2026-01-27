@@ -13,10 +13,9 @@
 [![Mutation score](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fphptg%2Ftransport-psr%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/phptg/transport-psr/master)
 [![Static analysis](https://github.com/phptg/transport-psr/actions/workflows/psalm.yml/badge.svg?branch=master)](https://github.com/phptg/transport-psr/actions/workflows/psalm.yml?query=branch%3Amaster)
 
-The package provides a [PSR-18](https://www.php-fig.org/psr/psr-18/) and 
-[PSR-7](https://www.php-fig.org/psr/psr-7/)/[PSR-17](https://www.php-fig.org/psr/psr-17/) compatible transport
-implementation for [phptg/bot-api](https://github.com/phptg/bot-api). It allows you to use any PSR-compliant HTTP client
-to make requests to the Telegram Bot API.
+The package provides a [PSR-18](https://www.php-fig.org/psr/psr-18/) and [PSR-17](https://www.php-fig.org/psr/psr-17/) 
+compatible transport implementation for [phptg/bot-api](https://github.com/phptg/bot-api). It allows you to use any
+PSR-compliant HTTP client to make requests to the Telegram Bot API.
 
 ## Requirements
 
@@ -82,7 +81,8 @@ $api->sendMessage(
 
 ### PSR webhook response factory
 
-The `PsrWebhookResponseFactory` creates PSR-7 compliant HTTP responses for webhook handlers:
+The `PsrWebhookResponseFactory` creates [PSR-7](https://www.php-fig.org/psr/psr-7/) compliant HTTP responses for webhook
+handlers:
 
 ```php
 use Psr\Http\Message\ResponseFactoryInterface;
