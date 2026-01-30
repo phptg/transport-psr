@@ -18,7 +18,7 @@ final class PsrUpdateFactoryTest extends TestCase
     public function testCreate(): void
     {
         $request = new ServerRequest(
-            body: (new StreamFactory())->createStream('{"update_id":33990940}')
+            body: (new StreamFactory())->createStream('{"update_id":33990940}'),
         );
 
         $update = PsrUpdateFactory::create($request);
@@ -34,7 +34,7 @@ final class PsrUpdateFactoryTest extends TestCase
     public function testBrokenJson(): void
     {
         $request = new ServerRequest(
-            body: (new StreamFactory())->createStream('asdf{')
+            body: (new StreamFactory())->createStream('asdf{'),
         );
 
         $this->expectException(TelegramParseResultException::class);
