@@ -11,6 +11,8 @@ use Psr\Log\LoggerInterface;
 
 /**
  * Factory for creating {@see Update} objects from PSR-7 server requests.
+ *
+ * @api
  */
 final readonly class PsrUpdateFactory
 {
