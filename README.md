@@ -15,8 +15,11 @@
 
 The package provides for [phptg/bot-api](https://github.com/phptg/bot-api):
 
-- [PSR-18](https://www.php-fig.org/psr/psr-18/) and [PSR-17](https://www.php-fig.org/psr/psr-17/) compatible transport implementation;
-- [PSR-7](https://www.php-fig.org/psr/psr-7/) webhook response factory.
+- `PsrTransport` — [PSR-18](https://www.php-fig.org/psr/psr-18/) and [PSR-17](https://www.php-fig.org/psr/psr-17/) 
+  compatible transport implementation;
+- `PsrWebhookResponseFactory` — [PSR-7](https://www.php-fig.org/psr/psr-7/) webhook response factory;
+- `PsrUpdateFactory` — factory for creating `Update` objects from [PSR-7](https://www.php-fig.org/psr/psr-7/) server 
+  requests.
 
 It allows you to use any PSR-compliant HTTP client to make requests to the Telegram Bot API.
 
@@ -124,6 +127,24 @@ The factory automatically:
 - encodes the data as JSON;
 - sets the `Content-Type` header to `application/json; charset=utf-8`;
 - sets the `Content-Length` header.
+
+### PSR update factory
+
+The `PsrUpdateFactory` creates `Update` objects from PSR-7 server requests in webhook handlers:
+
+```php
+use Phptg\TransportPsr\PsrUpdateFactory;
+use Psr\Http\Message\ServerRequestInterface;
+
+/**
+ * @var ServerRequestInterface $request
+ */
+
+$update = PsrUpdateFactory::create($request);
+
+// Now you can use the Update object
+$message = $update->message;
+```
 
 ## Documentation
 
