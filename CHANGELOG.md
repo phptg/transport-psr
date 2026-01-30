@@ -2,7 +2,7 @@
 
 ## 0.1.2 under development
 
-- Chg #9: Bump `phptg/bot-api` version to `^0.13`
+- Chg #9: Bump `phptg/bot-api` version to `^0.13`.
 
 ## 0.1.1 January 27, 2026
 
