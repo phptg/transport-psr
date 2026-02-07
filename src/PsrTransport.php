@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Phptg\TransportPsr;
 
 use Http\Message\MultipartStream\MultipartStreamBuilder;
+use LogicException;
 use Phptg\BotApi\Transport\ApiResponse;
 use Phptg\BotApi\Transport\DownloadFileException;
 use Phptg\BotApi\Transport\SaveFileException;
@@ -55,6 +56,9 @@ final readonly class PsrTransport implements TransportInterface
             $streamBuilder->addResource($key, (string) $value);
         }
         foreach ($files as $key => $file) {
+            if (!is_resource($file->resource) && !$file->resource instanceof StreamInterface) {
+                throw new LogicException('File resource must be a valid resource or instance of StreamInterface.');
+            }
             $streamBuilder->addResource(
                 $key,
                 $file->resource,
