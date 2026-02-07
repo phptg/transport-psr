@@ -3,6 +3,7 @@
 ## 0.1.2 under development
 
 - New #10: Add `PsrUpdateFactory`.
+- New #11: Add `StreamResourceReader`.
 - Chg #9, #11: Bump `phptg/bot-api` version to `^0.14`.
 
 ## 0.1.1 January 27, 2026
