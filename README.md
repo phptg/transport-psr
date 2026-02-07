@@ -19,7 +19,8 @@ The package provides for [phptg/bot-api](https://github.com/phptg/bot-api):
   compatible transport implementation;
 - `PsrWebhookResponseFactory` — [PSR-7](https://www.php-fig.org/psr/psr-7/) webhook response factory;
 - `PsrUpdateFactory` — factory for creating `Update` objects from [PSR-7](https://www.php-fig.org/psr/psr-7/) server 
-  requests.
+  requests;
+- `StreamResourceReader` — resource reader that handle PSR-7 `StreamInterface` instances.
 
 It allows you to use any PSR-compliant HTTP client to make requests to the Telegram Bot API.
 
