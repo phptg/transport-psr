@@ -19,7 +19,9 @@ The package provides for [phptg/bot-api](https://github.com/phptg/bot-api):
   compatible transport implementation;
 - `PsrWebhookResponseFactory` — [PSR-7](https://www.php-fig.org/psr/psr-7/) webhook response factory;
 - `PsrUpdateFactory` — factory for creating `Update` objects from [PSR-7](https://www.php-fig.org/psr/psr-7/) server 
-  requests.
+  requests;
+- `StreamResourceReader` — [resource reader](https://github.com/phptg/bot-api/blob/master/docs/resource-readers.md) that
+  handle PSR-7 `StreamInterface` instances.
 
 It allows you to use any PSR-compliant HTTP client to make requests to the Telegram Bot API.
 
@@ -144,6 +146,22 @@ $update = PsrUpdateFactory::create($request);
 
 // Now you can use the Update object
 $message = $update->message;
+```
+
+### Stream resource reader
+
+The `StreamResourceReader` is a [resource reader](https://github.com/phptg/bot-api/blob/master/docs/resource-readers.md)
+that handles PSR-7 `StreamInterface` instances. Pass it to the transport to enable sending files from PSR-7 streams:
+
+```php
+use Phptg\BotApi\Transport\NativeTransport;
+use Phptg\TransportPsr\StreamResourceReader;
+
+$transport = new NativeTransport(
+    resourceReaders: [
+        new StreamResourceReader(),
+    ],
+);
 ```
 
 ## Documentation
