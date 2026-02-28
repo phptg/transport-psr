@@ -1,6 +1,6 @@
 # PSR Transport for Telegram Bot API Change Log
 
-## 0.1.2 under development
+## 0.2 February 28, 2026
 
 - New #10: Add `PsrUpdateFactory`.
 - New #11: Add `StreamResourceReader`.
