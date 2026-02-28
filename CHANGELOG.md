@@ -5,7 +5,7 @@
 - New #10: Add `PsrUpdateFactory`.
 - New #11: Add `StreamResourceReader`.
 - Chg #12: Adapt `PsrTransport` to work with `phptg/bot-api` version `^0.15`.
-- Chg #9, #11, #12: Bump `phptg/bot-api` version to `^0.15`.
+- Chg #9, #11, #12, #13: Bump `phptg/bot-api` version to `^0.16`.
 
 ## 0.1.1 January 27, 2026
 
