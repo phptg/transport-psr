@@ -7,7 +7,7 @@ name: build
 
 jobs:
   tests:
-    name: PHP ${{ matrix.php }}-${{ matrix.os }}
+    name: PHP ${{ matrix.php }}-${{ matrix.os }}${{ matrix.prefer-lowest && '-lowest' || '' }}
 
     runs-on: ${{ matrix.os }}
 
@@ -21,6 +21,9 @@ jobs:
           - "8.3"
           - "8.4"
           - "8.5"
+        prefer-lowest:
+          - true
+          - false
 
     steps:
       - name: Checkout
@@ -37,6 +40,8 @@ jobs:
 
       - name: Install Composer dependencies
         uses: ramsey/composer-install@v3
+        with:
+          composer-options: ${{ matrix.prefer-lowest && '--prefer-lowest' || '' }}
 
       - name: Run tests with PHPUnit
         run: vendor/bin/phpunit --colors=always --coverage-clover=coverage.xml
