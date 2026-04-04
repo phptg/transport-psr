@@ -1,6 +1,6 @@
 # PSR Transport for Telegram Bot API Change Log
 
-## 0.2.2 March 1, 2026
+## 0.2.2 April 4, 2026
 
 - Enh #16: Add support for `phptg/bot-api` version `^0.18`.
 
