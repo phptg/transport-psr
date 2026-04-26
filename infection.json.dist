@@ -5,7 +5,7 @@
         ]
     },
     "logs": {
-        "text": "php:\/\/stderr",
+        "text": "runtime/infection/run.log",
         "stryker": {
             "report": "master"
         }
@@ -13,5 +13,6 @@
     "mutators": {
         "@default": true
     },
-    "minCoveredMsi": 100
+    "minCoveredMsi": 100,
+    "tmpDir": "runtime/infection"
 }
