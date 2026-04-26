@@ -8,7 +8,7 @@
 
 [![Latest Stable Version](https://poser.pugx.org/phptg/transport-psr/v)](https://packagist.org/packages/phptg/transport-psr)
 [![Total Downloads](https://poser.pugx.org/phptg/transport-psr/downloads)](https://packagist.org/packages/phptg/transport-psr)
-[![Build status](https://github.com/phptg/transport-psr/actions/workflows/build.yml/badge.svg)](https://github.com/phptg/transport-psr/actions/workflows/build.yml)
+[![Build status](https://github.com/phptg/transport-psr/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/phptg/transport-psr/actions/workflows/build.yml?query=branch%3Amaster)
 [![Coverage Status](https://coveralls.io/repos/github/phptg/transport-psr/badge.svg)](https://coveralls.io/github/phptg/transport-psr)
 [![Mutation score](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fphptg%2Ftransport-psr%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/phptg/transport-psr/master)
 [![Static analysis](https://github.com/phptg/transport-psr/actions/workflows/psalm.yml/badge.svg?branch=master)](https://github.com/phptg/transport-psr/actions/workflows/psalm.yml?query=branch%3Amaster)
