@@ -1,5 +1,10 @@
 # PSR Transport for Telegram Bot API Change Log
 
+## 0.3 April 26, 2026
+
+- Chg #19: Bump `phptg/bot-api` version to `^0.20`.
+- Chg #19: Remove `StreamResourceReader`.
+
 ## 0.2.2 April 4, 2026
 
 - Enh #16: Add support for `phptg/bot-api` version `^0.18`.
