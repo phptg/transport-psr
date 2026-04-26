@@ -8,6 +8,7 @@ use HttpSoft\Message\Response;
 use HttpSoft\Message\StreamFactory;
 use Phptg\BotApi\Type\InputFile;
 use Phptg\TransportPsr\PsrTransport;
+use Phptg\TransportPsr\Tests\TestHelper;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;
 
@@ -31,7 +32,7 @@ final class StrictTypeRequestTest extends TestCase
         );
 
         $file = new InputFile(
-            $streamFactory->createStream('file content'),
+            TestHelper::createResourceFromString('file content'),
         );
         $response = $transport->postWithFiles(
             'https://api.example.com/test',

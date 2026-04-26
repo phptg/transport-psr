@@ -7,8 +7,8 @@ namespace Phptg\TransportPsr\Tests;
 use HttpSoft\Message\Request;
 use HttpSoft\Message\Response;
 use HttpSoft\Message\StreamFactory;
-use LogicException;
 use PHPUnit\Framework\Constraint\Callback;
+use RuntimeException;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
@@ -212,12 +212,12 @@ final class PsrTransportTest extends TestCase
         $response = $transport->postWithFiles(
             '//url/sendPhoto',
             [
-                'chat_id' => 123,
+                'chat_id' => '123',
                 'caption' => 'hello',
             ],
             [
                 'photo' => new InputFile(
-                    (new StreamFactory())->createStream('test-file-body'),
+                    TestHelper::createResourceFromString('test-file-body'),
                     'face.png',
                 ),
             ],
@@ -250,11 +250,13 @@ final class PsrTransportTest extends TestCase
         assertSame('hello', $response->body);
     }
 
-    public function testPostWithFilesThrowsExceptionForInvalidResource(): void
+    public function testPostWithFilesWithNonExistsFile(): void
     {
         $client = $this->createMock(ClientInterface::class);
         $requestFactory = $this->createMock(RequestFactoryInterface::class);
-        $file = new InputFile('invalid-resource');
+
+        $filePath = __DIR__ . '/non-exists-file.txt';
+        $file = new InputFile($filePath);
 
         $transport = new PsrTransport(
             $client,
@@ -262,12 +264,14 @@ final class PsrTransportTest extends TestCase
             new StreamFactory(),
         );
 
-        $this->expectException(LogicException::class);
-        $this->expectExceptionMessage('File resource must be a valid resource or instance of StreamInterface.');
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage(
+            "fopen($filePath): Failed to open stream: No such file or directory",
+        );
 
         $transport->postWithFiles(
             '//url/sendPhoto',
-            ['chat_id' => 123],
+            ['chat_id' => '123'],
             ['photo' => $file],
         );
     }

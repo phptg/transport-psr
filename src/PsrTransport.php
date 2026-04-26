@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Phptg\TransportPsr;
 
 use Http\Message\MultipartStream\MultipartStreamBuilder;
-use LogicException;
 use Phptg\BotApi\Transport\ApiResponse;
 use Phptg\BotApi\Transport\DownloadFileException;
 use Phptg\BotApi\Transport\TransportInterface;
@@ -14,7 +13,9 @@ use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
-use Psr\Http\Message\StreamInterface;
+use RuntimeException;
+
+use function is_resource;
 
 /**
  * @api
@@ -52,16 +53,14 @@ final readonly class PsrTransport implements TransportInterface
     {
         $streamBuilder = new MultipartStreamBuilder($this->streamFactory);
         foreach ($data as $key => $value) {
-            $streamBuilder->addResource($key, (string) $value);
+            $streamBuilder->addResource($key, $value);
         }
         foreach ($files as $key => $file) {
-            if (!is_resource($file->resource) && !$file->resource instanceof StreamInterface) {
-                throw new LogicException('File resource must be a valid resource or instance of StreamInterface.');
-            }
+            $filename = $file->filename();
             $streamBuilder->addResource(
                 $key,
-                $file->resource,
-                $file->filename === null ? [] : ['filename' => $file->filename],
+                $this->prepareResource($file->pathOrResource),
+                $filename === null ? [] : ['filename' => $filename],
             );
         }
         $body = $streamBuilder->build();
@@ -130,5 +129,30 @@ final readonly class PsrTransport implements TransportInterface
             $response->getStatusCode(),
             $body->getContents(),
         );
+    }
+
+    /**
+     * @param string|resource $value
+     * @return resource
+     */
+    private function prepareResource(mixed $value): mixed
+    {
+        if (is_resource($value)) {
+            return $value;
+        }
+
+        set_error_handler(
+            static function (int $errorNumber, string $errorString): bool {
+                throw new RuntimeException($errorString);
+            },
+        );
+        try {
+            /** @var resource $resource */
+            $resource = fopen($value, 'rb');
+        } finally {
+            restore_error_handler();
+        }
+
+        return $resource;
     }
 }
