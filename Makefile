@@ -1,12 +1,20 @@
 .DEFAULT_GOAL := help
 
+zizmor: ARGS ?= --persona auditor --color always
+zizmor: ## Run zizmor security audit (1.25.2)
+	docker run \
+      --volume .:/project:ro \
+      --rm \
+      ghcr.io/zizmorcore/zizmor@sha256:14ea7f5cc7c67933394a35b5a38a277397818d232602635edb2010b313afb110 \
+      $(ARGS) /project
+
 scaffolder: ## Run scaffolder
 	docker run \
       --volume .:/project \
       --user $(shell id -u):$(shell id -g) \
       --interactive --tty --rm --init \
-      ghcr.io/phptg/scaffolder:latest \
-      $(RUN_ARGS)
+      ghcr.io/phptg/scaffolder@sha256:770ec561a4a31058e6b1f74620ecbef872301f1440423e29b85de79e31d55e92 \
+      $(ARGS)
 
 # Output the help for each task, see https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 help: ## This help.
