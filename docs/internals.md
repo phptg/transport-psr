@@ -8,6 +8,14 @@ The package is tested with [PHPUnit](https://phpunit.de/). To run tests:
 ./vendor/bin/phpunit
 ```
 
+## Mutation testing
+
+The package tests are checked with [Infection](https://infection.github.io/) mutation framework. To run it:
+
+```shell
+composer infection
+```
+
 ## Static analysis
 
 The code is statically analyzed with [Psalm](https://psalm.dev/). To run static analysis:
@@ -23,6 +31,14 @@ code style. To check and fix code style:
 
 ```shell
 composer cs-fix
+```
+
+## Refactoring
+
+The code is refactored with [Rector](https://getrector.com/). To apply it:
+
+```shell
+composer rector
 ```
 
 ## Dependencies
