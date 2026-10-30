@@ -35,7 +35,7 @@ It allows you to use any PSR-compliant HTTP client to make requests to the Teleg
 
 ## Requirements
 
-- PHP 8.2 - 8.5.
+- PHP 8.2 - 8.6.
 
 ## Installation
 

@@ -18,6 +18,7 @@ use Phptg\BotApi\Type\InputFile;
 use function PHPUnit\Framework\assertInstanceOf;
 use function PHPUnit\Framework\assertSame;
 use function PHPUnit\Framework\assertStringContainsStringIgnoringLineEndings;
+use function sprintf;
 
 final class PsrTransportTest extends TestCase
 {
@@ -266,7 +267,10 @@ final class PsrTransportTest extends TestCase
 
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage(
-            "fopen($filePath): Failed to open stream: No such file or directory",
+            sprintf(
+                '%s: Failed to open stream: No such file or directory',
+                PHP_VERSION_ID >= 80600 ? 'fopen()' : "fopen($filePath)",
+            ),
         );
 
         $transport->postWithFiles(
