@@ -6,7 +6,6 @@ namespace Phptg\TransportPsr\Tests\StrictTypeRequest;
 
 use HttpSoft\Message\RequestTrait;
 use LogicException;
-use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
@@ -17,10 +16,11 @@ use function is_string;
 final class StrictTypeRequest implements RequestInterface
 {
     use RequestTrait {
-        withHeader as protected traitWithHeader;
+        normalizeHeaderValue as private traitNormalizeHeaderValue;
     }
 
     /**
+     * @param array<string, string|string[]> $headers
      * @param StreamInterface|string|resource|null $body
      */
     public function __construct(
@@ -33,13 +33,16 @@ final class StrictTypeRequest implements RequestInterface
         $this->init($method, $uri, $headers, $body, $protocol);
     }
 
-    public function withHeader(string $name, $value): MessageInterface
+    /**
+     * @return array<mixed>
+     */
+    private function normalizeHeaderValue(mixed $value): array
     {
         $this->checkValue($value);
-        return $this->traitWithHeader($name, $value);
+        return $this->traitNormalizeHeaderValue($value);
     }
 
-    private function checkValue($value): void
+    private function checkValue(mixed $value): void
     {
         if (is_array($value)) {
             foreach ($value as $item) {

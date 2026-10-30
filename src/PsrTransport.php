@@ -140,6 +140,7 @@ final readonly class PsrTransport implements TransportInterface
         if (is_resource($value)) {
             return $value;
         }
+        /** @var string $value */
 
         set_error_handler(
             static function (int $errorNumber, string $errorString): bool {
