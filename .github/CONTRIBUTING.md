@@ -11,7 +11,7 @@ snippet that reproduces the problem. For questions and discussion, use the autho
 
 ## Development setup
 
-Requirements: PHP 8.2–8.5 and [Composer](https://getcomposer.org/download/).
+Requirements: PHP 8.2–8.6 and [Composer](https://getcomposer.org/download/).
 
 Fork the repository, clone it and run `composer install`.
 

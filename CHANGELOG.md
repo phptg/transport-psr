@@ -3,6 +3,7 @@
 ## 0.3.3 under development
 
 - Enh #40: Replace Psalm with PHPStan for static analysis.
+- Enh #41: Add PHP 8.6 support.
 
 ## 0.3.2 August 25, 2026
 
