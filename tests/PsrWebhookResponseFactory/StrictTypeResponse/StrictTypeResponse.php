@@ -6,7 +6,6 @@ namespace Phptg\TransportPsr\Tests\PsrWebhookResponseFactory\StrictTypeResponse;
 
 use HttpSoft\Message\ResponseTrait;
 use LogicException;
-use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
@@ -15,10 +14,11 @@ use function is_string;
 final class StrictTypeResponse implements ResponseInterface
 {
     use ResponseTrait {
-        withHeader as protected traitWithHeader;
+        normalizeHeaderValue as private traitNormalizeHeaderValue;
     }
 
     /**
+     * @param array<string, string|string[]> $headers
      * @param StreamInterface|string|resource|null $body
      */
     public function __construct(
@@ -31,13 +31,16 @@ final class StrictTypeResponse implements ResponseInterface
         $this->init($statusCode, $reasonPhrase, $headers, $body, $protocol);
     }
 
-    public function withHeader(string $name, $value): MessageInterface
+    /**
+     * @return array<mixed>
+     */
+    private function normalizeHeaderValue(mixed $value): array
     {
         $this->checkValue($value);
-        return $this->traitWithHeader($name, $value);
+        return $this->traitNormalizeHeaderValue($value);
     }
 
-    private function checkValue($value): void
+    private function checkValue(mixed $value): void
     {
         if (is_string($value)) {
             return;

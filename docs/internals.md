@@ -18,10 +18,10 @@ composer infection
 
 ## Static analysis
 
-The code is statically analyzed with [Psalm](https://psalm.dev/). To run static analysis:
+The code is statically analyzed with [PHPStan](https://phpstan.org/). To run static analysis:
 
 ```shell
-composer psalm
+composer phpstan
 ```
 
 ## Code style

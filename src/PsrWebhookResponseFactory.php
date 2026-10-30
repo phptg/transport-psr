@@ -61,7 +61,7 @@ final readonly class PsrWebhookResponseFactory
      * Creates a PSR-7 HTTP response directly from a method.
      * This is a convenience method that creates a {@see WebhookResponse} internally.
      *
-     * @param MethodInterface $method The Telegram Bot API method to be sent as webhook response.
+     * @param MethodInterface<mixed> $method The Telegram Bot API method to be sent as webhook response.
      *
      * @return ResponseInterface The PSR-7 HTTP response with JSON body and appropriate headers.
      *
